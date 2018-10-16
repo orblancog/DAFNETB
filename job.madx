@@ -51,7 +51,7 @@ RFcav->HARMON := 120;
 !stop;
 
 ! Beam pipe
-Rpipe = 50e-3;![m]
+Rpipe = 40e-3;![m]
 AngMax = 1.0; !maximum angle 1[rad]
 
 use, sequence=wholeip1;
