@@ -24,3 +24,6 @@ p_loc : parameters
 
 
 The lattice starts at the injection point. IP1 is at about 25m downstream.
+
+This model does not include the apertures, however, the beam pipe can be approximated to constant 4~cm radius, except in the wigglers where it is reduced to about 2~cm, and also the IP1 where it is reduced and assymetrically placed.
+A good diagram can be seen if Fig.~14 of Boscolo, Manuela. (2012). Monte Carlo simulation for the Touschek effect with the crab-waist scheme. Physical Review Special Topics - Accelerators and Beams. 15. 10.1103/PhysRevSTAB.15.104201.
