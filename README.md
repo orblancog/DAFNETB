@@ -7,7 +7,7 @@ Linear optics should be OK, but multipoles might not because they come from my
 own translator from mad -> madx.
 
 
-cur.madx : contains the quadrupoles and correctors strength. K1 is proportional to these magnets currents.
+cur.madx : contains the quadrupoles and correctors strength. K1 is proportional to these magnet currents.
 bendx_siddarta1 : some dipoles model
 wig : wiggler model
 kick : injection kickers
@@ -23,3 +23,4 @@ ring : the line declaration
 p_loc : parameters
 
 
+The lattice starts at the injection point. IP1 is at about 25m downstream.
