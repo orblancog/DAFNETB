@@ -1,0 +1,72 @@
+!! oblancog First twiss 20161123 
+option,-echo,-info,-warn;
+
+! the beam 
+E0     := 0.510;![GeV]
+//npar   := 2.05e10;
+emitx  := 0.28e-6;![m]
+emity  := 2.1e-9;![m] 
+blength:= 16e-3;![m]
+bcur   := 0.4e-3;![A]
+nbunch := 107;
+nparpb := 2.05e10;
+espread:= 1e-3;
+beam, PARTICLE=positron, ENERGY=E0,
+      ex=emitx, ey=emity, et=blength*espread,
+      sigt=blength, sige=espread, kbunch=nbunch,
+      NPART=nparpb, bcurrent=bcur, RADIATE=true;
+show, beam;
+
+! The ring 
+call,FILE='MRp_tuni_1148_1843.cur.madx';
+CALL,FILE="bendx_siddarta1.d.madx";
+CALL,FILE="wig_siddarta_low.d.madx";! from Panta
+! CALL,FILE="wig_550A_siddarta.d"       ! from Finuda
+CALL,FILE="kick.d.madx";
+CALL,FILE="bpm_1.d.madx";
+CALL,FILE="drift_siddarta_08.d.madx";
+CALL,FILE="chv.d.madx";
+CALL,FILE="sxp_siddarta.d.madx";
+CALL,FILE="skew.d.madx";
+CALL,FILE="qua_siddarta_08.d.madx";
+! CALL,FILE="ir1_siddarta_bendMoved.d"
+ CALL,FILE="ir1_siddarta_bendMoved1.d.madx";! to be used since 26_1_08
+CALL,FILE="ir2_siddarta_new.d.madx";
+CALL,FILE="ring_siddarta_08.d.madx";
+! CALL,FILE="ring_noWGL.d"
+CALL,FILE="p_loc_siddarta.par.madx";
+ms1: marker;
+mid2: marker;
+!end: marker;
+!wholeip1: LINE=(IP1,SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,finudalong,pl2,mid2,pl1,siddartalong);
+wholeip1: LINE=(mid2,pl1,siddartalong,IP1,SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,finudalong,pl2);
+use,sequence=wholeip1;
+
+
+! The cavity parameters
+RFcavon       := 1;! w/o rad 2/3
+RFcav->LAG    := 0.5-0.0345;!w/o rad, 0.5-0.016;
+//RFcav->FREQ   := 500.117256;
+RFcav->HARMON := 120;
+!stop;
+
+! Beam pipe
+Rpipe = 50e-3;![m]
+AngMax = 1.0; !maximum angle 1[rad]
+
+use, sequence=wholeip1;
+
+select, flag=twiss, clear;
+select, flag=twiss,column=name,keyword,s,l,betx,bety,alfx,alfy,mux,muy,dx,dy,x,
+	dpx,dpy,ddx,ddy,hinv;
+TWISS, chrom, file="mylut.tws";
+plot, colour=100, haxis=s, vaxis1=betx,bety, vaxis2=dx,hmin=0,hmax=200,title="slicing";
+plot, colour=100, haxis=s, vaxis=hinv, hmin=0, hmax=200, title="slicing";
+plot, colour=100, haxis=s, vaxis1=betx,bety, vaxis2=dx,dy,title="slicing";
+plot, colour=100, haxis=s, vaxis1=wx,wy, vaxis2=ddx,title="slicing";
+system, "ps2pdf madx.ps";
+system, "rm -f madx.ps";
+EMIT, deltap=0;
+
+
+stop;

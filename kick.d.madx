@@ -1,0 +1,20 @@
+
+! Injection Kickers
+
+kckpl101:kicker,hkick:= 0.e-03;
+kckpl202:kicker,hkick:= 0.e-03;
+kckpl201:kicker,hkick:= 0.e-03;
+
+! FEEDBACK (?)
+
+ktrh:marker;
+ktrv:marker;
+
+! RF cavity
+
+lcav:=1.84;
+rfcavon:=0;
+rfcav: rfcavity,l:=lcav/2,volt:=0.10*rfcavon,lag:=0.49,harmon:=120 ;!,
+ ;!      tfill=1.,shunt=0.2,pg=0.1
+
+return ;

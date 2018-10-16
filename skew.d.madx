@@ -1,0 +1,28 @@
+!skew quadrupolerupoles
+
+! skew length
+
+lsk:= 0.20;
+csk:= 2.80E-3;
+
+! L is the half skew legth
+
+QSKPL103:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=kskl103;
+QSKPL106:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=kskl106;
+QSKPS101:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=ksks101;
+QSKPS104:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=ksks104;
+QSKPS202:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=ksks202;
+QSKPS205:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=ksks205;
+QSKPL201:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=kskl201;
+QSKPL204:quadrupole,l:=lsk/2,tilt:=twopi/8,k1:=kskl204;
+
+ksks101 := csk * (iskews101 + diskews101);
+ksks104 := csk * (iskews104 + diskews104);
+ksks202 := csk * (iskews202 + diskews202);
+ksks205 := csk * (iskews205 + diskews205);
+kskl103 := csk * (iskewl103 + diskewl103);
+kskl106 := csk * (iskewl106 + diskewl106);
+kskl201 := csk * (iskewl201 + diskewl201);
+kskl204 := csk * (iskewl204 + diskewl204);
+
+RETURN ;

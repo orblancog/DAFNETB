@@ -1,0 +1,105 @@
+! LARGE SESTUPOLE CALIBRATION S
+! LARGE SESTUPOLE CALIBRATION S
+en:=510.;
+
+lsl := 0.15;
+lss := 0.10;
+
+nl := lsl*en;
+ns := lss*en;
+
+csx1 := 51.177;
+csx2 := 49.34;
+
+! SHORT SESTUPOLE CALIBRATION S [M**-3]
+! SHORT SESTUPOLE CALIBRATION S [M**-3]
+
+cssx1 := 19.74;
+cssx2 := 32.8;
+
+!SEXTUPOLES
+
+
+SXPPL100: SEXTUPOLE, L := lss/2, K2 := SXTKL100;
+
+SXPPL101: SEXTUPOLE, L := lss/2, K2 := SXTKL101;
+SXPPL102: SEXTUPOLE, L := lsl/2, K2 := SXTKL102;
+SXPPL103: SEXTUPOLE, L := lsl/2, K2 := SXTKL103;
+SXPPL104: SEXTUPOLE, L := lss/2, K2 := SXTKL104;
+
+SXPPS101: SEXTUPOLE, L := lss/2, K2 := SXTKS101;
+SXPPS102: SEXTUPOLE, L := lsl/2, K2 := SXTKS102;
+SXPPS103: SEXTUPOLE, L := lsl/2, K2 := SXTKS103;
+SXPPS104: SEXTUPOLE, L := lss/2, K2 := SXTKS104;
+
+SXPPS201: SEXTUPOLE, L := lss/2, K2 := SXTKS201;
+SXPPS202: SEXTUPOLE, L := lsl/2, K2 := SXTKS202;
+SXPPS203: SEXTUPOLE, L := lsl/2, K2 := SXTKS203;
+SXPPS204: SEXTUPOLE, L := lss/2, K2 := SXTKS204;
+
+SXPPL201: SEXTUPOLE, L := lss/2, K2 := SXTKL201;
+SXPPL202: SEXTUPOLE, L := lsl/2, K2 := SXTKL202;
+SXPPL203: SEXTUPOLE, L := lsl/2, K2 := SXTKL203;
+SXPPL204: SEXTUPOLE, L := lss/2, K2 := SXTKL204;
+
+
+! Sextupole  k**2 [m**-3] as a function of the energy [MeV] and
+! power supply current [A]
+
+SXTKL100 := (cspl100/ABS(cspl100))*(cssx1*ABS(cspl100)+cssx2)/ns;
+
+SXTKL101 := (cspl101/ABS(cspl101))*(cssx1*ABS(cspl101)+cssx2)/ns;
+SXTKL102 := (cspl102/ABS(cspl102))*(csx1*ABS(cspl102)+csx2)/nl;
+SXTKL103 := (cspl103/ABS(cspl103))*(csx1*ABS(cspl103)+csx2)/nl;
+SXTKL104 := (cspl104/ABS(cspl104))*(cssx1*ABS(cspl104)+cssx2)/ns;
+
+SXTKS101 := (csps101/ABS(csps101))*(cssx1*ABS(csps101)+cssx2)/ns;
+SXTKS102 := (csps102/ABS(csps102))*(csx1*ABS(csps102)+csx2)/nl;
+SXTKS103 := (csps103/ABS(csps103))*(csx1*ABS(csps103)+csx2)/nl;
+SXTKS104 := (csps104/ABS(csps104))*(cssx1*ABS(csps104)+cssx2)/ns;
+
+SXTKS201 := (csps201/ABS(csps201))*(cssx1*ABS(csps201)+cssx2)/ns;
+SXTKS202 := (csps202/ABS(csps202))*(csx1*ABS(csps202)+csx2)/nl;
+SXTKS203 := (csps203/ABS(csps203))*(csx1*ABS(csps203)+csx2)/nl;
+SXTKS204 := (csps204/ABS(csps204))*(cssx1*ABS(csps204)+cssx2)/ns;
+
+SXTKL201 := (cspl201/ABS(cspl201))*(cssx1*ABS(cspl201)+cssx2)/ns;
+SXTKL202 := (cspl202/ABS(cspl202))*(csx1*ABS(cspl202)+csx2)/nl;
+SXTKL203 := (cspl203/ABS(cspl203))*(csx1*ABS(cspl203)+csx2)/nl;
+SXTKL204 := (cspl204/ABS(cspl204))*(cssx1*ABS(cspl204)+cssx2)/ns;
+
+
+
+! Octupoles
+
+KOCTPS104 := 8.388 * IOCTPS104;
+KOCTPL210 := 8.388 * IOCTPL210;
+KOCTPL101 := 8.388 * IOCTPL101;
+
+OCTPS104: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0,0,KOCTPS104,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+OCTPL210: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0,0,KOCTPL210,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+OCTPL101: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0,0,KOCTPL101,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+OCTPL201: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0,0,KOCTPL201,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+
+multips104: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, sks104,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+multips105: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, sks105,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+multips205: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, sks205,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+multips206: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, sks206,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+multipl204: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, skl204,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+multipl205: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, skl205,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+multipl106: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, skl106,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+multipl107: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,0, skl107,0,0,0,0,0,0,0},
+KSL:={0,0,0,0,0,0,0,0,0,0};
+
+return ;

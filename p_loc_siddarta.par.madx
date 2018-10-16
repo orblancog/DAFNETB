@@ -1,0 +1,202 @@
+
+! ****************************************************
+!
+
+en:=510.;
+
+qf1r1tilt := 0.0;
+qf1l1tilt := 0.0;
+
+
+betass := 0.0500;
+betasl := -0.02;
+betaps := -0.0275;
+betapl := -0.037;
+
+k1st := 0.007;
+
+qfrfudge := qflfudge;
+
+qdfudge := 0.976;
+qflfudge := 0.976;
+qfrfudge := 0.976;
+
+kqd0 := -16.5677 * qdfudge;
+ cqf1re:=1.0044 * qfrfudge   ;! normalization to the Aster value 3.020
+cqf1le:=1.0044 * qflfudge;
+
+
+!  Two Rings Fit e+ 8 Jan 2008
+QFLFUDGE :=   9.816341E-01;
+qfrfudge :=   9.816341E-01;
+QDFUDGE  :=   9.782509E-01;
+BETAPL  :=   -4.576141E-02;
+BETAPS  :=   -3.879604E-02;
+BETASL  :=   -1.961205E-02;
+BETASS  :=    5.149621E-02;
+K1ST    :=    8.001456E-03;
+KFT2S  :=    -2.843458E-02;
+KFT1S  :=     9.311609E-03;
+KFT2L  :=    -1.376891E-02;
+KFT1L  :=     1.073086E-03;
+
+! One Ring  Fit e+ 8 Jan 2008
+BETAPL  :=   -4.678779E-02;
+BETAPS  :=   -4.119476E-02;
+BETASL  :=   -1.840383E-02;
+BETASS  :=    5.303263E-02;
+KFT2S   :=   -2.453522E-02;
+KFT1S   :=    1.468487E-02;
+KFT2L   :=   -8.237051E-03;
+KFT1L   :=    6.924437E-03;
+
+QFLFUDGE := 0.98014935;
+QFRFUDGE := 0.98014935;
+QDFUDGE  := 0.97925725;
+
+
+! Two Rings  Fit e+ 9 Jan 2008
+QFLFUDGE := 0.97830525;
+QFRFUDGE := 0.97830525;
+QDFUDGE  := 0.9790204;
+k1st := 6.92663E-3;
+BETAPL := -6.214254E-02;
+BETAPS := -3.490124E-02;
+BETASL := -4.253552E-03;
+BETASS :=  5.347541E-02;
+KFT2S :=  -5.984503E-03;
+KFT1S :=  -1.026714E-02;
+KFT2L :=   8.526450E-04;
+KFT1L :=   7.086980E-03;
+
+
+! value to match the e+ dispersion 9_1_08
+QFLFUDGE := 0.980;
+QFRFUDGE := 0.980;
+QDFUDGE  := 0.979;
+k1st := 0.0072;
+BETAPL := -0.0468;
+BETAPS := -0.0412;
+BETASL := -0.0184;
+BETASS := 0.0530;
+KFT2S := 0.0;
+KFT1S := 0.0;
+KFT2L := 0.0;
+KFT1L := 0.0;
+KFT2S :=  -1.124810E-02;
+KFT1S :=  -4.392206E-03;
+KFT2L :=   1.495712E-03;
+KFT1L :=   4.344904E-03;
+
+! One Ring Fit 10_1 2008
+betasl := -0.02;
+QFLFUDGE  :=   9.788420E-01;
+QFRFUDGE  :=   9.788420E-01;
+QDFUDGE :=   9.775314E-01;
+BETAPL :=   -4.626114E-02;
+BETAPS :=   -2.697244E-02;
+BETASS :=    5.291041E-02;
+K1ST  :=  7.989711E-03;
+KFT2S :=    -1.523491E-02;
+KFT1S :=    -1.484544E-02;
+KFT2L :=    -8.101557E-03;
+KFT1L :=     1.490271E-03;
+
+! Two Ring Fit 10_1 2008
+QFLFUDGE  := 0.97898465;
+qfrfudge :=  0.97898465;
+QDFUDGE := 0.97742555;
+K1ST := 0.006997015;
+betasl := -0.02;
+betass := 0.053;
+BETAPL :=  -4.471928E-02;
+BETAPS :=  -2.806993E-02;
+KFT2S  :=  -1.300417E-02;
+KFT1S  :=  -7.209256E-03;
+KFT2L  :=  -1.581355E-03;
+KFT1L  :=   7.233520E-03;
+
+! Nominal values revised  Jan 2008
+BETAPL := -0.017;
+BETAPS :=  -0.010;
+BETASL :=  -0.022;
+BETASS :=  0.050;
+
+! Two Rings fit  21_1_08
+betasl := -0.022;
+qflfudge := .9816;
+qfrfudge := .9816;
+
+qdfudge  := .9774;
+k1st     := 7.0675E-03;
+betass  := 0.039;
+BETAPL :=  -3.381145E-02;
+BETAPS :=  -1.346163E-02;
+BETASS :=   3.900166E-02;
+KFT2S  :=  -2.324464E-02;
+KFT1S  :=  -1.025608E-02;
+KFT2L :=    4.745260E-03;
+KFT1L :=    8.576307E-03;
+
+! Two Rings fit  24_1_08
+!
+! Varori medi ottenuti da   fp2_24_1_08 e fe2_24_1_08
+qflfudge := 0.9816055;
+qdfudge  := 0.97808895;
+k1st     := 7.90885E-03;
+! Nominal values
+BETASL  := -0.022;
+BETAPS :=  -0.010;
+! Varori medi ottenuti da  fe5 e fp4 con media spostata verso i valori teorici
+BETAPL := -0.03;
+BETASS :=  0.04;
+
+KFT2S := -2.171620E-02;
+KFT1S := -2.872707E-03;
+KFT2L := -4.211852E-03;
+KFT1L :=  3.591535E-03;
+
+! Fit of dispersion 26_1_08
+/*
+!  Studiato il FIT in funzione di  k1st ci si ferma al valore compatibile con il
+valori di kft1l e kft2l
+*/
+/*
+!  compatibili con lo spostamento dei WIGGLER e DEI SXT sul polo finale che
+dovrebbero produrre le lentine ~ 0.02
+*/
+/*comment;
+k1st     := 6.50E-03;
+
+KFT2S := -1.643246E-02;
+KFT1S:=  -8.411338E-04;
+KFT2L :=  1.054946E-02;
+KFT1L :=  2.071536E-02;
+endcomment;
+*/
+dpp:=1.;
+br0:=1.701176886;
+bro:=br0*dpp;
+
+eps := 0.0;
+
+kang_qd0 := 46.0e-3;
+kang_qf1 := -0.0e-3;
+
+! septum quadrupole effect on the beam
+kseptum := 0.0075;
+
+/*
+! Multipoles in the IR2 Quads QUAI2001 QUAI2007 and in the DHC  , LRAD:=0,
+TILT:=0, KNL:={0,0,0,0,0,0,0,0,0,0}, KSL:={0,0,0,0,0,0,0,0,0,0};
+*/
+  angh_QI2001 := 0.020                           ;!da rivedere
+kang_DHCPL201 := -0.013084 - 0.0042;
+kang_DHCPS201 :=  0.013084 + 0.0042;
+
+! IPs cross angles, used for evaluation of the dispersion contribution from IRs
+
+ip2_cross_ang := 6.7416E-02;
+ip1_cross_ang := 2.5E-02;
+
+RETURN;
