@@ -65,13 +65,13 @@ hinv := (1+(table(twiss,alfx))^2)/table(twiss,betx)*table(twiss,dx)^2
 select, flag=twiss, clear;
 select, flag=twiss,column=name,keyword,s,l,betx,bety,alfx,alfy,mux,muy,dx,dy,x,
 	dpx,dpy,ddx,ddy,hinv;
-TWISS, chrom, file="mylut.tws";
+TWISS, chrom, file="DAFNETB_twiss.tfs";
 plot, colour=100, haxis=s, vaxis1=betx,bety, vaxis2=dx,dy,hmin=0,hmax=100,title="DAFNE";
 plot, colour=100, haxis=s, vaxis=hinv, hmin=0, hmax=100, title="DAFNE";
 plot, colour=100, haxis=s, vaxis1=wx,wy, vaxis2=ddx,title="DAFNE";
 system, "ps2pdf madx.ps";
 system, "rm -f madx.ps";
 EMIT, deltap=0;
-
+touschek, tolerance=1e-3,file="DAFNETB_touschek.tfs";
 
 stop;
