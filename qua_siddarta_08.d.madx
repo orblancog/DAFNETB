@@ -14,9 +14,9 @@ c2s:=4.53;
 c1l:=16.963;
 c2l:=5.62;
 
-lsq := 0.29 ;! large
-llq := 0.30 ;! small
-lla := 0.38 ;! large aperture
+lsq := 0.29 ;! large skew quadrupoles
+llq := 0.30 ;! small aperture quadrupoles, |Kq|E ≤ 3200 [MeV.m-2]
+lla := 0.38 ;! large aperture quadrupoles, |Kq|E ≤ 2224 [MeV.m-2]
 
 ! large aperture quadrupoles
 
