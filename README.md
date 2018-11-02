@@ -29,4 +29,5 @@ This model includes the BPM apertures, however, the beam pipe can be approximate
 A good diagram can be seen if Fig. 14 of the publication Boscolo, Manuela. (2012). Monte Carlo simulation for the Touschek effect with the crab-waist scheme. Physical Review Special Topics - Accelerators and Beams. 15. 10.1103/PhysRevSTAB.15.104201.
 
 oblancog 2018/OCT/16 First Release
+
 oblancog 2018/NOV/02 Adding BPM apertures and limits on gradients

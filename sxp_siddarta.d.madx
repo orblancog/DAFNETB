@@ -2,8 +2,8 @@
 ! LARGE SESTUPOLE CALIBRATION S
 en:=510.;
 
-lsl := 0.15;
-lss := 0.10;
+lsl := 0.15; ! Large sextupole |Ks|.Ls.E ≤ 7500 [MeV.m-2]
+lss := 0.10; ! Small sextupole |Ks|.Ls.E ≤ 6666 [MeV.m-2]
 
 nl := lsl*en;
 ns := lss*en;
