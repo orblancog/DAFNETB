@@ -1,5 +1,5 @@
-oblancog 2018/OCT/16
-
+DAFNETB
+=======
 
 The main file is job.madx.
 DAFNE has two main ring MRe and MRp. Here is the model of the MRp (positron ring).
@@ -21,9 +21,12 @@ Files :
 * ir2   : ir2_region. Not used. Beams are separated.
 * ring  : the line declaration
 * p_loc : parameters
-
+* aper  : contains the MRp BPM apertures
 
 The lattice starts at the injection point. IP1 is at about 25m downstream.
 
-This model does not include the apertures, however, the beam pipe can be approximated to constant 4cm radius, except in the wigglers where it is reduced to about 2cm, and also the IP1 where it is reduced and assymetrically placed.
-A good diagram can be seen if Fig. 14 of Boscolo, Manuela. (2012). Monte Carlo simulation for the Touschek effect with the crab-waist scheme. Physical Review Special Topics - Accelerators and Beams. 15. 10.1103/PhysRevSTAB.15.104201.
+This model includes the BPM apertures, however, the beam pipe can be approximated to constant 4cm radius, except in the wigglers where it is reduced to about 2cm, and also the IP1 where it is reduced and assymetrically placed.
+A good diagram can be seen if Fig. 14 of the publication Boscolo, Manuela. (2012). Monte Carlo simulation for the Touschek effect with the crab-waist scheme. Physical Review Special Topics - Accelerators and Beams. 15. 10.1103/PhysRevSTAB.15.104201.
+
+oblancog 2018/OCT/16 First Release
+oblancog 2018/NOV/02 Adding BPM apertures and limits on gradients
