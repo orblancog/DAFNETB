@@ -1,0 +1,63 @@
+SET_APER(): MACRO = {
+ ! tolerances
+ ertol=0;
+ egtol=0;
+ estol=0;
+
+ ! BPMs with Round aperture, diameter 88mm
+ Rounddia88mm = 88e-3;
+ BPBPL101, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL102, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL107, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol}; 
+ BPBPL108, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS101, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS102, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS107, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS108, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS201, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS202, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS203, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS204, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS208, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS209, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL202, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL207, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL207, apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+
+ ! BPMs with Arc Dipole aperture,
+ ! straight cuts are here approximated to an ellipse
+ ArcDipolewidth  = 94e-3;
+ ArcDipoleheight = 53e-3;
+ ArcDipolemayoraxis = 49.25e-3*2;
+ ArcDipoleminoraxis = 33.41e-3*2;
+ BPBPL103, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPL106, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPS103, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPS106, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPS204, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPS207, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPL203, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPL206, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+
+ ! BPMs with Arc Wiggler aperture,
+ ! straight cuts are here approximated to a rectangle
+ ArcWigglerwidth  = 120e-3;
+ ArcWigglerheight =  20e-3;
+ ! ArcWigglermayoraxis = 49.25e-3*2;
+ ! ArcWigglerminoraxis = 33.41e-3*2;
+ ! BPBPL103, apertype=rectellipse, aperture={ArcWigglerwidth/2,ArcWigglerheight/2,ArcWigglermayoraxis/2,ArcWigglerminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BPBPL104, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL105, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS104, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS105, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS205, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS206, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL204, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL205, apertype= rectangle, aperture={ArcWigglerwidth/2.0,ArcWigglerheight/2.0}, aper_tol={ertol,egtol,estol};
+
+ ! BPMs with Rect-tag 4B aperture
+ ! the Rect-tag has rounded corners, here it is approximated to a rectangle
+ Rect_tag4Bwidth = 88e-3;
+ Rect_tag4Bheight= 54e-3;
+ BPBPL201, apertype= rectangle, aperture={Rect_tag4Bwidth/2.0,Rect_tag4Bheight/2.0}, aper_tol={ertol,egtol,estol};
+}

@@ -3,7 +3,6 @@ option,-echo,-info,-warn;
 
 ! the beam 
 E0     := 0.510;![GeV]
-//npar   := 2.05e10;
 emitx  := 0.28e-6;![m]
 emity  := 2.1e-9;![m] 
 blength:= 16e-3;![m]
@@ -53,25 +52,33 @@ RFcav->HARMON := 120;
 ! Beam pipe
 Rpipe = 40e-3;![m]
 AngMax = 1.0; !maximum angle 1[rad]
+! apertures
+call, file="apertures.madx";
+exec, SET_APER();
+!stop;
 
 use, sequence=wholeip1;
 
 
-! hinv declaration
-hinv := (1+(table(twiss,alfx))^2)/table(twiss,betx)*table(twiss,dx)^2
-     + 2*table(twiss,alfx)*table(twiss,dx)*table(twiss,dpx)
-     + table(twiss,betx)*table(twiss,dpx)^2;
+! miscelaneous functions
+hinv      := (1+(table(twiss,alfx))^2)/table(twiss,betx)*table(twiss,dx)^2
+             + 2*table(twiss,alfx)*table(twiss,dx)*table(twiss,dpx)
+             + table(twiss,betx)*table(twiss,dpx)^2;
+grad      := beam->brho*table(twiss,k1l)/table(twiss,L);
+natchromx := table(twiss,k1l)*table(twiss,betx);
+natchromy := table(twiss,k1l)*table(twiss,bety);
 
 select, flag=twiss, clear;
 select, flag=twiss,column=name,keyword,s,l,betx,bety,alfx,alfy,mux,muy,dx,dy,x,
-	dpx,dpy,ddx,ddy,hinv;
-TWISS, chrom, file="DAFNETB_twiss.tfs";
+	dpx,dpy,ddx,ddy,hinv,grad,natchromx,natchromy,apertype,aper_1,aper_2,aper_3,aper_4;
+twiss, chrom, file="DAFNETB_MRp_twiss.tfs";
 plot, colour=100, haxis=s, vaxis1=betx,bety, vaxis2=dx,dy,hmin=0,hmax=100,title="DAFNE";
 plot, colour=100, haxis=s, vaxis=hinv, hmin=0, hmax=100, title="DAFNE";
 plot, colour=100, haxis=s, vaxis1=wx,wy, vaxis2=ddx,title="DAFNE";
 system, "ps2pdf madx.ps";
 system, "rm -f madx.ps";
-EMIT, deltap=0;
-touschek, tolerance=1e-3,file="DAFNETB_touschek.tfs";
+emit, deltap=0;
+touschek, tolerance=1e-3,file="DAFNETB_MRp_touschek.tfs";
+save, sequence=wholeip1, file="DAFNETB_MRp.seq";
 
 stop;
