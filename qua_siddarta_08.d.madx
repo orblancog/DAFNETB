@@ -1,8 +1,8 @@
 ! 2 half thin quadrupolerupoles are added to match the measured tune shift
 ! November 2003 P. Raimondi
 ! septum quadrupolerupole effect on the beam
-sept_quad:multipole, LRAD:=0, TILT:=0, KNL:={0, kseptum,0,0,0,0,0,0,0,0}, KSL:={0,
-0,0,0,0,0,0,0,0,0};
+sept_quad:multipole, LRAD:=0, TILT:=0, KNL:={0, kseptum,0,0,0,0,0,0,0,0},
+                                       KSL:={0,0,0,0,0,0,0,0,0,0};
 
 
 ! QUADRUPOLERUPOLE CALIBRATION S AND LENGH
