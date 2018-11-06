@@ -78,7 +78,7 @@ plot, colour=100, haxis=s, vaxis1=wx,wy, vaxis2=ddx,title="DAFNE";
 system, "ps2pdf madx.ps";
 system, "rm -f madx.ps";
 emit, deltap=0;
-touschek, tolerance=1e-3,file="DAFNETB_MRp_touschek.tfs";
-save, sequence=wholeip1, file="DAFNETB_MRp.seq";
+touschek, tolerance=1e-3,file="DAFNETF_MRp_touschek.tfs";
+save, sequence=wholeip1, file="DAFNETF_MRp.seq";
 
 stop;
