@@ -77,8 +77,8 @@ plot, colour=100, haxis=s, vaxis=hinv, hmin=0, hmax=100, title="DAFNE";
 plot, colour=100, haxis=s, vaxis1=wx,wy, vaxis2=ddx,title="DAFNE";
 system, "ps2pdf madx.ps";
 system, "rm -f madx.ps";
-emit, deltap=0;
 touschek, tolerance=1e-3,file="DAFNE_TF_MRp_touschek.tfs";
+aperture,file="DAFNE_TF_MRp_apertureoutput.tfs";
+emit, deltap=0;
 save, sequence=wholeip1, file="DAFNE_TF_MRp.seq";
-
 stop;
