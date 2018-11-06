@@ -1,4 +1,5 @@
 SET_APER(): MACRO = {
+ ! Start of apertures
  ! tolerances
  ertol=0;
  egtol=0;
@@ -244,4 +245,68 @@ SET_APER(): MACRO = {
  SXPPL204,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
  CHVPL206,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
  QUAPL210,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ OCTPL101,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ QUAPL114,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ QSKPL103,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ CHVPL103,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ DCPL101S,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ SLM,       apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ QUAPL217,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPS210,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+ BPBPL200,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
+
+ ! Elements in the Dipole-Wiggler-Dipole sections
+ ! straight cuts are here approximated to an ellipse
+ DWDwidth  = 100e-3;
+ DWDheight =  53e-3;
+ DWDmayoraxis = 51.25e-3*2;
+ DWDminoraxis = 31.88e-3*2;
+ QUAPL105,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPL104,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPL102,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPL106,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPL106,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPL105,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPL103,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPL107,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPL107,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPS104,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPS104,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPS104,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPS102,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPS102,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPS105,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPS105,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPS103,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPS103,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPS106,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPS204,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPS203,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPS202,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPS205,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPS205,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPS204,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPS203,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPS206,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPS206,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPL204,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPL204,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPL202,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPL202,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPL205,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ MULTIPL205,apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ SXPPL203,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ CHVPL203,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ QUAPL206,  apertype=rectellipse, aperture={DWDwidth/2,DWDheight/2,DWDmayoraxis/2,DWDminoraxis/2}, aper_tol={ertol,egtol,estol};
+ 
+ ! Dipoles aperture
+ BL2A, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BL2B, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BL1A, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BL1B, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BS2A, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BS2B, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BS1A, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ BS1B, apertype=rectellipse, aperture={ArcDipolewidth/2,ArcDipoleheight/2,ArcDipolemayoraxis/2,ArcDipoleminoraxis/2}, aper_tol={ertol,egtol,estol};
+ !End of apertures
 }

@@ -71,7 +71,7 @@ natchromy := table(twiss,k1l)*table(twiss,bety);
 select, flag=twiss, clear;
 select, flag=twiss,column=name,keyword,s,l,betx,bety,alfx,alfy,mux,muy,dx,dy,x,
 	dpx,dpy,ddx,ddy,hinv,grad,natchromx,natchromy,apertype,aper_1,aper_2,aper_3,aper_4;
-twiss, chrom, file="DAFNETB_MRp_twiss.tfs";
+twiss, chrom, file="DAFNETF_MRp_twiss.tfs";
 plot, colour=100, haxis=s, vaxis1=betx,bety, vaxis2=dx,dy,hmin=0,hmax=100,title="DAFNE";
 plot, colour=100, haxis=s, vaxis=hinv, hmin=0, hmax=100, title="DAFNE";
 plot, colour=100, haxis=s, vaxis1=wx,wy, vaxis2=ddx,title="DAFNE";
