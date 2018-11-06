@@ -162,7 +162,6 @@ SET_APER(): MACRO = {
  BPBPL110,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
  BPBPS199,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
  CHVPI101,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
-!MSPL,      apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};! already declared
  QUAPS100,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
  BPBPS100,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
  QUAPS101,  apertype=circle, aperture={Rounddia88mm/2.0}, aper_tol={ertol,egtol,estol};
