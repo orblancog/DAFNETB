@@ -1,4 +1,4 @@
-DAFNETB
+DAFNE_TF
 =======
 
 The main file is job.madx.
