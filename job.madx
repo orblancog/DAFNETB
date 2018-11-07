@@ -60,6 +60,8 @@ exec, SET_APER();
 use, sequence=wholeip1;
 
 
+
+
 ! miscelaneous functions
 hinv      := (1+(table(twiss,alfx))^2)/table(twiss,betx)*table(twiss,dx)^2
              + 2*table(twiss,alfx)*table(twiss,dx)*table(twiss,dpx)
@@ -68,6 +70,21 @@ grad      := beam->brho*table(twiss,k1l)/table(twiss,L);
 natchromx := table(twiss,k1l)*table(twiss,betx);
 natchromy := table(twiss,k1l)*table(twiss,bety);
 
+
+! start lattice at IP1
+save, sequence=wholeip1, file="DAFNE_TF_MRp.seq";
+call, file="DAFNE_TF_MRp.seq";
+use, sequence=wholeip1;
+seqedit, sequence=wholeip1;
+flatten;
+cycle, start=IP1;
+flatten;
+endedit;
+use, sequence=wholeip1;
+
+
+hcrossing_angle := 0.050/2;
+survey, file="DAFNE_TF_MRp_survey.tfs",theta0=hcrossing_angle;
 select, flag=twiss, clear;
 select, flag=twiss,column=name,keyword,s,l,betx,bety,alfx,alfy,mux,muy,dx,dy,x,
 	dpx,dpy,ddx,ddy,hinv,grad,natchromx,natchromy,apertype,aper_1,aper_2,aper_3,aper_4;
@@ -80,5 +97,5 @@ system, "rm -f madx.ps";
 touschek, tolerance=1e-3,file="DAFNE_TF_MRp_touschek.tfs";
 aperture,file="DAFNE_TF_MRp_apertureoutput.tfs";
 emit, deltap=0;
-save, sequence=wholeip1, file="DAFNE_TF_MRp.seq";
+
 stop;
