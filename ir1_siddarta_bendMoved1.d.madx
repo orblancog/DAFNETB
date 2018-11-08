@@ -1,267 +1,159 @@
-kang_qd0 := 45.99480e-3;
-kang_qf1 :=  0.0;
-dhk_qd0s: multipole, LRAD:=0, TILT:=0, KNL:={  kang_qd0,0,0,0,0,0,0,0,0,0},
-                                       KSL:={0,0,0,0,0,0,0,0,0,0};
-dhk_qd0l: multipole, LRAD:=0, TILT:=0, KNL:={ -kang_qd0,0,0,0,0,0,0,0,0,0},
-                                       KSL:={0,0,0,0,0,0,0,0,0,0};
-dhk_qf1s: multipole, LRAD:=0, TILT:=0, KNL:={  kang_qf1,0,0,0,0,0,0,0,0,0},
-                                       KSL:={0,0,0,0,0,0,0,0,0,0};
-dhk_qf1l: multipole, LRAD:=0, TILT:=0, KNL:={ -kang_qf1,0,0,0,0,0,0,0,0,0},
-                                       KSL:={0,0,0,0,0,0,0,0,0,0};
-
-LQD0 :=  0.23;
-LQF1 :=  0.24;
-LIR2 :=  0.152925+0.073;
-LIR3 :=  0.23543523-0.003;
-LIR4 :=  0.451168 + 0.0595335;
-LIR5 :=  0.55678 - 0.0595335;
-
-dd23 := 0.026                ;!0.032  Moved 26_1_08
-!d1: drift,l:=0.244 - 0.000199 +dd12   !+.01926  + 0.004927
-d1: drift,l := 0.294;
-dir2: drift,l:= lir2-dd12+dd23;
-dir3: drift,l:=lir3-dd23;
-dir5: drift,l:=lir5;
-dir4: drift,l:=lir4;
-dqd02: drift,l:= 0.02;
-dqd02_hk1: drift,l:= 0.02 - 0.004230 ;!0.005341
-dqd02_hk2: drift,l:= 0.02 + 0.004230 ;!0.005341
-dqd03: drift,l:= 0.01;
-dqf12: drift,l:= 0.02;
-dqf13: drift,l:= 0.01;
-
+ kang_qd0:=45.99480e-3;
+ kang_qf1:=0.0;
+dhk_qd0s:multipole, knl:={kang_qd0};
+dhk_qd0l:multipole, knl:={-kang_qd0};
+dhk_qf1s:multipole, knl:={kang_qf1};
+dhk_qf1l:multipole, knl:={-kang_qf1};
+dd23:=0.026; //0.032  Moved 26_1_08
+d1:drift, l:=0.294;
+dir2:drift, l:=lir2-dd12+dd23;
+dir3:drift, l:=lir3-dd23;
+dir5:drift, l:=lir5;
+dir4:drift, l:=lir4;
+dqd02:drift, l:=0.02;
+dqd02_hk1:drift, l:=0.02-0.004230; //0.005341
+dqd02_hk2:drift, l:=0.02+0.004230; //0.005341
+dqd03:drift, l:=0.01;
+dqf12:drift, l:=0.02;
+dqf13:drift, l:=0.01;
+LQD0:=0.23;
+LQF1:=0.24;
+LIR2:=0.152925+0.073;
+LIR3:=0.23543523-0.003;
+LIR4:=0.451168+0.0595335;
+LIR5:=0.55678-0.0595335;
 pc1:marker;
-
-kqd1 := kqd0;
-kqd2 := kqd0;
-kQFl := kQF1;
-kQFs := kQF1;
-
-LQD0 := 0.23;
-LQF1 := 0.24;
-
-PMQDI101: quadrupole, l:=lqd0/2, k1:=kQD1;
-PMQDI102: quadrupole, l:=lqd0/2, k1:=kQD2;
-PMQFPL01: quadrupole, l:=lqf1/2, k1:=kQFl;
-PMQFPS01: quadrupole, l:=lqf1/2, k1:=kQFs;
-
-value, lqd0;
-value, lqf1;
-value, lir2;
-value, lir3;
-value, lir4;
-value, lir5;
-
+kqd1:=kqd0;
+kqd2:=kqd0;
+kQFl:=kQF1;
+kQFs:=kQF1;
+LQD0:=0.23;
+LQF1:=0.24;
+PMQDI101:quadrupole, l:=lqd0/2, k1:=kQD1;
+PMQDI102:quadrupole, l:=lqd0/2, k1:=kQD2;
+PMQFPL01:quadrupole, l:=lqf1/2, k1:=kQFl;
+PMQFPS01:quadrupole, l:=lqf1/2, k1:=kQFs;
+ value, lqd0;
+ value, lqf1;
+ value, lir2;
+ value, lir3;
+ value, lir4;
+ value, lir5;
 midqd0:marker;
 midqf1:marker;
-
-cqd0r := 1.01222 ;! normalization to the Aster value 6.722
-cqd0l := 1.01222;
-
-qd0Tilt := 0.0  ;!-0.017453 * 1.0
-! QD0r  gradient integral 6.64082 T
-qd0r17:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.01001*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.01001*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r16:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.03349*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.03349*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r15:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.112  *cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.112  *sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r14:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.24844*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.24844*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r13:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.31947*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.31947*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r12:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.34301*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.34301*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r11:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.3501 *cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.3501 *sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r10:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.35217*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.35217*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r9 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.35175*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.35175*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r8 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.34921*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.34921*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r7 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.34375*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.34375*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r6 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.33175*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.33175*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r5 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.30929*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.30929*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r4 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.26023*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.26023*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r3 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.14655*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.14655*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r2 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.04424*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.04424*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-qd0r1 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0r*0.01182*cos(qd0Tilt),0,0,0,0,0,0,0,0},
-                                    KSL:={0, -cqd0r*0.01182*sin(qd0Tilt),0,0,0,0,0,0,0,0};
-
-! QD0l
-qd0l1 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.01001,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l2 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.03349,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l3 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.112,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l4 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.24844,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l5 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.31947,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l6 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.34301,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l7 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.3501,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l8 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.35217,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l9 :multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.35175,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l10:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.34921,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l11:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.34375,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l12:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.33175,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l13:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.30929,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l14:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.26023,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l15:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.14655,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l16:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.04424,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-qd0l17:multipole, LRAD:=0, TILT:=0, KNL:={0, -cqd0l*0.01182,0,0,0,0,0,0,0,0},
-                                    KSL:={0,0,0,0,0,0,0,0,0,0};
-
-
-lQD0r: line=(dqd03,qd0r1,dqd02,qd0r2,dqd02,qd0r3,dqd02,qd0r4,dqd02,qd0r5,dqd02,
-qd0r6,dqd02,qd0r7,dqd02,qd0r8,dqd02,qd0r9,midqd0,dqd02_hk1,dhk_qd0s,dqd02_hk2,qd0r10,
-dqd02,qd0r11,dqd02,qd0r12,dqd02,qd0r13,dqd02,qd0r14,dqd02,qd0r15,dqd02,qd0r16,
-dqd02,qd0r17,dqd03);
-
-lQD0l: line=(dqd03,qd0l1,dqd02,qd0l2,dqd02,qd0l3,dqd02,qd0l4,dqd02,qd0l5,dqd02,qd0l6,
-dqd02,qd0l7,dqd02,qd0l8,dqd02_hk2,dhk_qd0l,dqd02_hk1,midqd0,qd0l9,dqd02,qd0l10,
-dqd02,qd0l11,dqd02,qd0l12,dqd02,qd0l13,dqd02,qd0l14,dqd02,qd0l15,dqd02,qd0l16,
-dqd02,qd0l17,dqd03);
-
-QD0r:SBEND,L:=0.240,ANGLE:= 0.047175,k1:= KQD0,e1:=0,e2:=0;
-QD0l:SBEND,L:=0.240,ANGLE:=-0.047175,k1:= KQD0,e1:=0,e2:=0;
-
-
-! QF1re right, electrons, gradient integral 3.00681
-qf1r1tilt := 0.0 ;!-0.017453 * 1.0
-qf1re1 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.000413*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.000413*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re2 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.001974*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.001974*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re3 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.012612*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.012612*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re4 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.067989*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.067989*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re5 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.126753*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.126753*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re6 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.139447*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.139447*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re7 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.143812*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.143812*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re8 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.145835*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.145835*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re9 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.148106*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.148106*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re10:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.152424*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.152424*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re11:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.158200*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.158200*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re12:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.158471*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.158471*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re13:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.154506*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.154506*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re14:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.145894*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.145894*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re15:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.129588*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.129588*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re16:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.073448*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.073448*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re17:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.014374*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.014374*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re18:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.002270*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.002270*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-qf1re19:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1re*0.000485*cos(qf1r1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1re*0.000485*sin(qf1r1tilt),0,0,0,0,0,0,0,0};
-
-! QF1le left, electrons
-
-qf1le19:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.000413*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.000413*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le18:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.001974*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.001974*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le17:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.012612*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.012612*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le16:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.067989*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.067989*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le15:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.126753*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.126753*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le14:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.139447*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.139447*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le13:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.143812*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.143812*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le12:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.145835*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.145835*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le11:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.148106*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.148106*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le10:multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.152424*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.152424*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le9 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.158200*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.158200*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le8 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.158471*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.158471*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le7 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.154506*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.154506*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le6 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.145894*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.145894*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le5 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.129588*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.129588*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le4 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.073448*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.073448*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le3 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.014374*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.014374*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le2 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.002270*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.002270*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-qf1le1 :multipole, LRAD:=0, TILT:=0, KNL:={0, cqf1le*0.000485*cos(qf1l1tilt),0,0,0,0,0,0,0,0},
-                                     KSL:={0, cqf1le*0.000485*sin(qf1l1tilt),0,0,0,0,0,0,0,0};
-
-!  quadrupoli
-! QD0 -17.1799 m-2  per 0.23 m
-! QF1   7.3839 m-2  per 0.24 m
-
-lQF1re: line=(dqf13,qf1re1,dqf12,qf1re2,dqf12,qf1re3,dqf12,qf1re4,dqf12,qf1re5,dqf12,
-qf1re6,dqf12,qf1re7,dqf12,qf1re8,dqf12,qf1re9,dqf12,qf1re10,midqf1,dqf12,qf1re11,
-dqf12,qf1re12,dqf12,qf1re13,dqf12,qf1re14,dqf12,qf1re15,dqf12,qf1re16,dqf12,
-qf1re17,dqf12,qf1re18,dqf12,qf1re19,dqf13);
-
-lQF1le: line=(dqf13,qf1le1,dqf12,qf1le2,dqf12,qf1le3,dqf12,qf1le4,dqf12,qf1le5,dqf12,
-qf1le6,dqf12,qf1le7,dqf12,qf1le8,dqf12,qf1le9,dqf12,midqf1,qf1le10,dqf12,qf1le11,
-dqf12,qf1le12,dqf12,qf1le13,dqf12,qf1le14,dqf12,qf1le15,dqf12,qf1le16,dqf12,
-qf1le17,dqf12,qf1le18,dqf12,qf1le19,dqf13);
-
+cqf1re:=1.0044*qfrfudge; // Qf short normalization to the Aster value 3.020
+cqf1le:=1.0044*qflfudge; // Qf long
+kqd0:=-16.5677*qdfudge;
+cqd0r:=1.01222; // normalization to the Aster value 6.722
+cqd0l:=1.01222;
+qd0Tilt:=0.0; //-0.017453 * 1.0
+qd0r17:multipole, knl:={0,-cqd0r*0.01001},tilt:=qd0Tilt;
+qd0r16:multipole, knl:={0,-cqd0r*0.03349},tilt:=qd0Tilt;
+qd0r15:multipole, knl:={0,-cqd0r*0.112},tilt:=qd0Tilt;
+qd0r14:multipole, knl:={0,-cqd0r*0.24844},tilt:=qd0Tilt;
+qd0r13:multipole, knl:={0,-cqd0r*0.31947},tilt:=qd0Tilt;
+qd0r12:multipole, knl:={0,-cqd0r*0.34301},tilt:=qd0Tilt;
+qd0r11:multipole, knl:={0,-cqd0r*0.3501},tilt:=qd0Tilt;
+qd0r10:multipole, knl:={0,-cqd0r*0.35217},tilt:=qd0Tilt;
+qd0r9:multipole, knl:={0,-cqd0r*0.35175},tilt:=qd0Tilt;
+qd0r8:multipole, knl:={0,-cqd0r*0.34921},tilt:=qd0Tilt;
+qd0r7:multipole, knl:={0,-cqd0r*0.34375},tilt:=qd0Tilt;
+qd0r6:multipole, knl:={0,-cqd0r*0.33175},tilt:=qd0Tilt;
+qd0r5:multipole, knl:={0,-cqd0r*0.30929},tilt:=qd0Tilt;
+qd0r4:multipole, knl:={0,-cqd0r*0.26023},tilt:=qd0Tilt;
+qd0r3:multipole, knl:={0,-cqd0r*0.14655},tilt:=qd0Tilt;
+qd0r2:multipole, knl:={0,-cqd0r*0.04424},tilt:=qd0Tilt;
+qd0r1:multipole, knl:={0,-cqd0r*0.01182},tilt:=qd0Tilt;
+qd0l1:multipole, knl:={0,-cqd0l*0.01001};
+qd0l2:multipole, knl:={0,-cqd0l*0.03349};
+qd0l3:multipole, knl:={0,-cqd0l*0.112};
+qd0l4:multipole, knl:={0,-cqd0l*0.24844};
+qd0l5:multipole, knl:={0,-cqd0l*0.31947};
+qd0l6:multipole, knl:={0,-cqd0l*0.34301};
+qd0l7:multipole, knl:={0,-cqd0l*0.3501};
+qd0l8:multipole, knl:={0,-cqd0l*0.35217};
+qd0l9:multipole, knl:={0,-cqd0l*0.35175};
+qd0l10:multipole, knl:={0,-cqd0l*0.34921};
+qd0l11:multipole, knl:={0,-cqd0l*0.34375};
+qd0l12:multipole, knl:={0,-cqd0l*0.33175};
+qd0l13:multipole, knl:={0,-cqd0l*0.30929};
+qd0l14:multipole, knl:={0,-cqd0l*0.26023};
+qd0l15:multipole, knl:={0,-cqd0l*0.14655};
+qd0l16:multipole, knl:={0,-cqd0l*0.04424};
+qd0l17:multipole, knl:={0,-cqd0l*0.01182};
+lQD0r:line=(dqd03,qd0r1,
+                          dqd02,qd0r2,dqd02,qd0r3,dqd02,qd0r4,dqd02,qd0r5,
+                          dqd02,qd0r6,dqd02,qd0r7,dqd02,qd0r8,dqd02,qd0r9,
+                          midqd0,
+                          dqd02_hk1,dhk_qd0s,dqd02_hk2,qd0r10,dqd02,qd0r11,dqd02,qd0r12,
+                          dqd02,qd0r13,dqd02,qd0r14,dqd02,qd0r15,dqd02,qd0r16,dqd02,
+                          qd0r17,dqd03);
+lQD0l:line=(dqd03,qd0l1,
+                          dqd02,qd0l2,dqd02,qd0l3,dqd02,qd0l4,dqd02,qd0l5,
+                          dqd02,qd0l6,dqd02,qd0l7,dqd02,qd0l8,
+                          dqd02_hk2,dhk_qd0l,dqd02_hk1,midqd0,qd0l9,
+                          dqd02,qd0l10,dqd02,qd0l11,dqd02,qd0l12,dqd02,qd0l13,
+                          dqd02,qd0l14,dqd02,qd0l15,dqd02,qd0l16,dqd02,qd0l17,dqd03);
+QD0r:SBEND, L:=0.240, ANGLE:=0.047175, k1:=KQD0, e1:=0, e2:=0;
+QD0l:SBEND, L:=0.240, ANGLE:=-0.047175, k1:=KQD0, e1:=0, e2:=0;
+qf1r1tilt:=0.0; //-0.017453 * 1.0
+qf1re1:multipole, knl:={0,cqf1re*0.000413},tilt:=qf1r1tilt;
+qf1re2:multipole, knl:={0,cqf1re*0.001974},tilt:=qf1r1tilt;
+qf1re3:multipole, knl:={0,cqf1re*0.012612},tilt:=qf1r1tilt;
+qf1re4:multipole, knl:={0,cqf1re*0.067989},tilt:=qf1r1tilt;
+qf1re5:multipole, knl:={0,cqf1re*0.126753},tilt:=qf1r1tilt;
+qf1re6:multipole, knl:={0,cqf1re*0.139447},tilt:=qf1r1tilt;
+qf1re7:multipole, knl:={0,cqf1re*0.143812},tilt:=qf1r1tilt;
+qf1re8:multipole, knl:={0,cqf1re*0.145835},tilt:=qf1r1tilt;
+qf1re9:multipole, knl:={0,cqf1re*0.148106},tilt:=qf1r1tilt;
+qf1re10:multipole, knl:={0,cqf1re*0.152424},tilt:=qf1r1tilt;
+qf1re11:multipole, knl:={0,cqf1re*0.158200},tilt:=qf1r1tilt;
+qf1re12:multipole, knl:={0,cqf1re*0.158471},tilt:=qf1r1tilt;
+qf1re13:multipole, knl:={0,cqf1re*0.154506},tilt:=qf1r1tilt;
+qf1re14:multipole, knl:={0,cqf1re*0.145894},tilt:=qf1r1tilt;
+qf1re15:multipole, knl:={0,cqf1re*0.129588},tilt:=qf1r1tilt;
+qf1re16:multipole, knl:={0,cqf1re*0.073448},tilt:=qf1r1tilt;
+qf1re17:multipole, knl:={0,cqf1re*0.014374},tilt:=qf1r1tilt;
+qf1re18:multipole, knl:={0,cqf1re*0.002270},tilt:=qf1r1tilt;
+qf1re19:multipole, knl:={0,cqf1re*0.000485},tilt:=qf1r1tilt;
+qf1le19:multipole, knl:={0,cqf1le*0.000413},tilt:=qf1r1tilt;
+qf1le18:multipole, knl:={0,cqf1le*0.001974},tilt:=qf1r1tilt;
+qf1le17:multipole, knl:={0,cqf1le*0.012612},tilt:=qf1r1tilt;
+qf1le16:multipole, knl:={0,cqf1le*0.067989},tilt:=qf1r1tilt;
+qf1le15:multipole, knl:={0,cqf1le*0.126753},tilt:=qf1r1tilt;
+qf1le14:multipole, knl:={0,cqf1le*0.139447},tilt:=qf1r1tilt;
+qf1le13:multipole, knl:={0,cqf1le*0.143812},tilt:=qf1r1tilt;
+qf1le12:multipole, knl:={0,cqf1le*0.145835},tilt:=qf1r1tilt;
+qf1le11:multipole, knl:={0,cqf1le*0.148106},tilt:=qf1r1tilt;
+qf1le10:multipole, knl:={0,cqf1le*0.152424},tilt:=qf1r1tilt;
+qf1le9:multipole, knl:={0,cqf1le*0.158200},tilt:=qf1r1tilt;
+qf1le8:multipole, knl:={0,cqf1le*0.158471},tilt:=qf1r1tilt;
+qf1le7:multipole, knl:={0,cqf1le*0.154506},tilt:=qf1r1tilt;
+qf1le6:multipole, knl:={0,cqf1le*0.145894},tilt:=qf1r1tilt;
+qf1le5:multipole, knl:={0,cqf1le*0.129588},tilt:=qf1r1tilt;
+qf1le4:multipole, knl:={0,cqf1le*0.073448},tilt:=qf1r1tilt;
+qf1le3:multipole, knl:={0,cqf1le*0.014374},tilt:=qf1r1tilt;
+qf1le2:multipole, knl:={0,cqf1le*0.002270},tilt:=qf1r1tilt;
+qf1le1:multipole, knl:={0,cqf1le*0.000485},tilt:=qf1r1tilt;
+lQF1re:line=(dqf13,qf1re1,
+                          dqf12,qf1re2,dqf12,qf1re3,dqf12,qf1re4,dqf12,qf1re5,
+                          dqf12,qf1re6,dqf12,qf1re7,dqf12,qf1re8,dqf12,qf1re9,
+                          dqf12,qf1re10,midqf1,dqf12,qf1re11,dqf12,qf1re12,dqf12,
+                          qf1re13,dqf12,qf1re14,dqf12,qf1re15,dqf12,qf1re16,dqf12,qf1re17,
+                          dqf12,qf1re18,dqf12,qf1re19,dqf13);
+lQF1le:line=(dqf13,qf1le1,
+                          dqf12,qf1le2,dqf12,qf1le3,dqf12,qf1le4,dqf12,qf1le5,
+                          dqf12,qf1le6,dqf12,qf1le7,dqf12,qf1le8,dqf12,qf1le9,
+                          dqf12,midqf1,qf1le10,dqf12,qf1le11,dqf12,qf1le12,dqf12,
+                          qf1le13,dqf12,qf1le14,dqf12,qf1le15,dqf12,qf1le16,dqf12,qf1le17,
+                          dqf12,qf1le18,dqf12,qf1le19,dqf13);
 pc1:marker;
 mspl:marker;
 mqd:marker;
 d0:marker;
-
 IP1:marker;
-
-Siddartashort:
-line=(d1,QD0r,mqd,dir2,lQF1re,dir3,BPBPS199,dir4,CHVPI101,CHVPI101,dir5,mspl);
-
-Siddartalong:
-line=(mspl,dir5,CHVPI102,CHVPI102,dir4,BPBPL110,dir3,lQF1le,dir2,mqd,QD0l,d1);
-
-!Siddartashort: line=(d0,dstar,PMQDI101,dhk_qd0s,dhk_qd3s,dhk_qd4s,dhk_qd5s,&
-!               PMQDI101,mqd,dir2,PMQFPS01,dhk_qf1s,PMQFPS01,dir3,CHVPI101,&
-!               dir5,mspl)
-!Siddartalong: line=(mspl,dir5,CHVPI102,dir3,PMQFPL01,dhk_qf1l,PMQFPL01,&
-!                    dir2,mqd,PMQDI102,dhk_qd0l,dhk_qd3l,dhk_qd4l,dhk_qd5l,&
-!                    PMQDI102,dstar)
-
-Siddarta: line= (Siddartalong,IP1,Siddartashort);
-
-return;
+Siddartashort:line=(d1,QD0r,mqd,dir2,lQF1re,dir3,BPBPS199,dir4,
+                                        CHVPI101,CHVPI101,dir5,mspl);
+Siddartalong:line=(mspl,dir5,CHVPI102,CHVPI102,dir4,BPBPL110,dir3,lQF1le,
+                                        dir2,mqd,QD0l,d1);
+Siddarta:line=(Siddartalong,IP1,Siddartashort);

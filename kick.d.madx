@@ -4,6 +4,6 @@ kckpl201:kicker, hkick:=0.e-03;
 ktrh:marker;
 ktrv:marker;
 lcav:=1.84;
-rfcav:rfcavity, l:=lcav/2, volt:=0.10, lag:=0.49, harmon:=120;//,
+rfcav:rfcavity, l:=lcav/2, volt:=0.10*rfcavon, lag:=0.49, harmon:=120,NO_CAVITY_TOTALPATH;//,
 !                tfill=1.,shunt=0.2,pg=0.1;
 

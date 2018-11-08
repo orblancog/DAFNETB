@@ -1,7 +1,7 @@
 ! orblancog
 ! MRp madx model 2018/NOV/08
-! obtained from Catia Milard
-TITLE, "Positroni:  Modello  per Siddharta";
+! obtained from Catia Milard, version Siddarta_Jan_09
+TITLE, "Positroni:  Modello  per Siddharta Jan2009";
 set,format="-20s","23.17g"; ! full precision
 option,-echo,-info,-warn;
 
@@ -21,30 +21,24 @@ beam, PARTICLE=positron, ENERGY=E0,
 show, beam;
 
 ! The ring
-call, FILE="p_loc_siddarta.par.madx";
-call, FILE="MRp_1_4_09_4e30sempre.cur.madx";
-call, FILE="bendx_siddarta1.d.madx";
-call, FILE="wig_siddarta_low.d.madx";
+CALL, FILE="p_loc_siddarta.par.madx";
+CALL, FILE="MRp_1_4_09_4e30sempre.cur.madx";
+CALL, FILE="bendx_siddarta1.d.madx";
+CALL, FILE="wig_siddarta_low.d.madx";
 CALL, FILE="kick.d.madx";
 CALL, FILE="bpm_1.d.madx";
 CALL, FILE="drift_siddarta_Jan_09.d.madx";
-CALL,FILE="chv.d.madx";
-CALL,FILE="sxp_siddarta_Jan09.d.madx";
-CALL,FILE="skew.d.madx";
-CALL,FILE="qua_siddarta_08.d.madx";
-! CALL,FILE="ir1_siddarta_bendMoved.d"
- CALL,FILE="ir1_siddarta_bendMoved1.d.madx";! to be used since 26_1_08
-CALL,FILE="ir2_siddarta_new.d.madx";
-CALL,FILE="ring_siddarta_08.d.madx";
-! CALL,FILE="ring_noWGL.d"
-
-ms1: marker;
+CALL, FILE="chv.d.madx";
+CALL, FILE="sxp_siddarta_Jan09.d.madx";
+CALL, FILE="skew.d.madx";
+CALL, FILE="qua_siddarta_08.d.madx";
+CALL, FILE="ir1_siddarta_bendMoved1.d.madx";// to be used  AGAIN since 21_3_08
+CALL, FILE="ir2_siddarta_20_3_08.d.madx";
+CALL, FILE="ring_siddarta_08.d.madx";
+ms1:  marker;
 mid2: marker;
-!end: marker;
-!wholeip1: LINE=(IP1,SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,finudalong,pl2,mid2,pl1,siddartalong);
-wholeip1: LINE=(mid2,pl1,siddartalong,IP1,SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,finudalong,pl2);
-use,sequence=wholeip1;
-
+whole:  LINE=(mid2,pl1,siddartalong,IP1,SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,finudalong,pl2);
+!use, sequence=whole;
 
 ! The cavity parameters
 RFcavon       := 1;! w/o rad 2/3
@@ -53,7 +47,7 @@ RFcav->LAG    := 0.5-0.0345;!w/o rad, 0.5-0.016;
 RFcav->HARMON := 120;
 !stop;
 
-! Beam pipe
+! Beam pipe approx
 Rpipe = 40e-3;![m]
 AngMax = 1.0; !maximum angle 1[rad]
 ! apertures
@@ -61,7 +55,7 @@ call, file="apertures.madx";
 exec, SET_APER();
 !stop;
 
-use, sequence=wholeip1;
+use, sequence=whole;
 
 
 
@@ -87,7 +81,7 @@ endedit;
 use, sequence=wholeip1;
 
 
-hcrossing_angle := 0.050/2;
+hcrossing_angle := 0.047175000000000002/2;!0;!0.050/2;
 survey, file="DAFNE_TF_MRp_survey.tfs",theta0=hcrossing_angle;
 select, flag=twiss, clear;
 select, flag=twiss,column=name,keyword,s,l,betx,bety,alfx,alfy,mux,muy,dx,dy,x,
