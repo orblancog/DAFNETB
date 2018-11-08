@@ -10,8 +10,8 @@ Files :
 * cur.madx : contains the quadrupoles and correctors strength. K1 is proportional to these magnet currents.
 * bendx_siddarta1 : some dipoles model
 * wig   : wiggler model
-* kick  : injection kickers
-* bpm   : bpms and rf cavity
+* kick  : injection kickers and rf cavity
+* bpm   : bpms
 * drift : drifts
 * chv   : horizontal and vertical correctors
 * sxp   : sextupoles
