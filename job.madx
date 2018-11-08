@@ -23,15 +23,13 @@ show, beam;
 ! The ring
 call, FILE="p_loc_siddarta.par.madx";
 call, FILE="MRp_1_4_09_4e30sempre.cur.madx";
-call,FILE='MRp_tuni_1148_1843.cur.madx';
-CALL,FILE="bendx_siddarta1.d.madx";
-CALL,FILE="wig_siddarta_low.d.madx";! from Panta
-! CALL,FILE="wig_550A_siddarta.d"       ! from Finuda
-CALL,FILE="kick.d.madx";
-CALL,FILE="bpm_1.d.madx";
-CALL,FILE="drift_siddarta_08.d.madx";
+call, FILE="bendx_siddarta1.d.madx";
+call, FILE="wig_siddarta_low.d.madx";
+CALL, FILE="kick.d.madx";
+CALL, FILE="bpm_1.d.madx";
+CALL, FILE="drift_siddarta_Jan_09.d.madx";
 CALL,FILE="chv.d.madx";
-CALL,FILE="sxp_siddarta.d.madx";
+CALL,FILE="sxp_siddarta_Jan09.d.madx";
 CALL,FILE="skew.d.madx";
 CALL,FILE="qua_siddarta_08.d.madx";
 ! CALL,FILE="ir1_siddarta_bendMoved.d"

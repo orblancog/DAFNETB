@@ -1,157 +1,82 @@
-!**********************************************************
-! Wiggler Model: each pole is modeled as a dipole embedded
-!                in two thin lenses and two drifts
-!
-! Parameters L and ANGLE of SBEND magnets are chosen from
-! the integrated trajectory and from the tranfer matrix
-! calculated from the fit (M.Preger) of the field measurements
-!
-! September 2, 2003, G.Benedetti
-!
-!**********************************************************
-!
-! Fudge thin quadrupole in the middle of each wiggler to
-! match the measured dispersion and alfac for both beams
-! November 2003,  (P.Raimondi)
-!
-!**********************************************************
-!
-! FINT and Kn adjusted according to dafne tecnical note MM-34
-!
-! March 12, 2004, G. Benedetti
-!
-!**********************************************************
+ sc:=1.00*0.93;
+ lawl:drift, l:=(0.00607)/2.;
+ k1st:=0.005; //-0.0022*sc*sc
+ k2nd:=-0.78;
+ k2_1:=1.;
+ k2_2:=-.55;
+ k2_3:=.9;
+ k2_4:=-.75;
+ k2_5:=.7;
+ k3rd:=-34.4;
+ k4th:=-4.5e3;
+ kfr1st:=-0.0260*sc*sc;
+ k2finr:=34.4; // k2*l
+ kfr3rd:=15;
+ kfr4th:=1.4e3;
+ kfl1st:=0.0;
+ kfl2nd:=0.23;
+ kfl3rd:=-22.5;
+ kfl4th:=-2.5e3;
+ WMP:MULTIPOLE, knl:={0,k1st,k2nd,k3rd,k4th};
+ WMN:MULTIPOLE, knl:={0,k1st,-k2nd,k3rd,-k4th};
+ WMTL:MULTIPOLE, knl:={0,kfl1st,kfl2nd,kfl3rd,kfl4th};
+ WMTR:MULTIPOLE, knl:={0,kfr1st,0.,kfr3rd,kfr4th};
+ WMT1l:MULTIPOLE, knl:={0,kft1l};
+ WMT2l:MULTIPOLE, knl:={0,kft2l};
+ WMT1s:MULTIPOLE, knl:={0,kft1s};
+ WMT2s:MULTIPOLE, knl:={0,kft2s};
+ TETAW:=0.118729*sc; // central bend angle
+ TETAL:=(0.118729 *sc); //0.119644 *sc             // left bend angle
+ TETAR:=(0.118729 *sc); //0.116708 *sc            // right bend angle
+ LWT:=0.1368; // terminal pole magn. length
+ LWI:=0.2355; // inner pole magn. length
+ LDRT1:=0.02175; // terminal drift length
+ LDRT2:=0.04204; // terminal drift length
+ LDRI:=0.04278; // inner drift length
+ FINWT:=0.384; // terminal pole fint
+ FINWI:=0.317; // inner pole fint
+WT1A:sbend, l:=LWT/2, angle:=-TETAL/2, e1:=0, e2:=0, fint:=FINWT, fintx:=0, hgap:=0.0185;
+WT1B:sbend, l:=LWT/2, angle:=-TETAL/2, e1:=0, e2:=-TETAL, fint:=0, fintx:=FINWT, hgap:=0.0185;
+           WT1C:sbend, l:=LWT/2, angle:=-TETAR/2, e1:=0, e2:=0, fint:=FINWT, fintx:=0, hgap:=0.0185, k2:=k2finr;
+           WT1D:sbend, l:=LWT/2, angle:=-TETAR/2, e1:=0, e2:=-TETAR, fint:=0, fintx:=FINWT, hgap:=0.0185, k2:=k2finr;
+WPA:sbend, l:=LWI/2, angle:=TETAW, e1:=TETAW, e2:=0, fint:=FINWI, fintx:=0, hgap:=0.0185;
+WPB:sbend, l:=LWI/2, angle:=TETAW, e1:=0, e2:=TETAW, fint:=0, fintx:=FINWI, hgap:=0.0185;
+WNA:sbend, l:=LWI/2, angle:=-TETAW, e1:=-TETAW, e2:=0, fint:=FINWI, fintx:=0, hgap:=0.0185;
+WNB:sbend, l:=LWI/2, angle:=-TETAW, e1:=0, e2:=-TETAW, fint:=0, fintx:=FINWI, hgap:=0.0185;
+WT2A:sbend, l:=LWT/2, angle:=-TETAL/2, e1:=-TETAL, e2:=0, fint:=FINWT, fintx:=0, hgap:=0.0185;
+WT2B:sbend, l:=LWT/2, angle:=-TETAL/2, e1:=0, e2:=0, fint:=0, fintx:=FINWT, hgap:=0.0185;
+           WT2C:sbend, l:=LWT/2, angle:=-TETAR/2, e1:=-TETAR, e2:=0, fint:=FINWT, fintx:=0, hgap:=0.0185, k2:=k2finr;
+           WT2D:sbend, l:=LWT/2, angle:=-TETAR/2, e1:=0, e2:=0, fint:=0, fintx:=FINWT, hgap:=0.0185, k2:=k2finr;
+DRW:drift, l:=LDRI;
+DRT1:drift, l:=LDRT1;
+DRT2:drift, l:=LDRT2;
+MW:marker; // wiggler centre
+WT1L:LINE=(WMTL,WT1A,WT1B,WMTL); // entrance left terminal pole
+WT2R:LINE=(WMTR,WT2C,WT2D,WMTR); // exit left terminal pole
+WT1R:LINE=(WMTR,WT1C,WT1D,WMTR); // entrance right terminal pole
+WT2L:LINE=(WMTL,WT2A,WT2B,WMTL); // exit right terminal pole
+WPP:LINE=(WMP,WPA,MW,WPB,WMP); // positive inner pole
+WNN:LINE=(WMN,WNA,WNB,WMN); // negative inner pole
+WPP_1:LINE=(WMP,WPA,MW,WPB,WMP); // positive inner pole
+WNN_1:LINE=(WMN,WNA,WNB,WMN); // negative inner pole
+WPP_2:LINE=(WMP,WPA,MW,WPB,WMP); // positive inner pole
+WNN_2:LINE=(WMN,WNA,WNB,WMN); // negative inner pole
+WPP_3:LINE=(WMP,WPA,MW,WPB,WMP); // positive inner pole
+WNN_3:LINE=(WMN,WNA,WNB,WMN); // negative inner pole
+WPP_4:LINE=(WMP,WPA,MW,WPB,WMP); // positive inner pole
+WNN_4:LINE=(WMN,WNA,WNB,WMN); // negative inner pole
+WPP_5:LINE=(WMP,WPA,MW,WPB,WMP); // positive inner pole
+WNN_5:LINE=(WMN,WNA,WNB,WMN); // negative inner pole
+WIGGLERPL1:LINE=(lawl,DRT1,WT1L,DRT2,DRW,WPP,2*(DRW),WNN,2*(DRW),WPP,
+                                    2*(DRW),WNN,2*(DRW),WPP,DRW,DRT2,WMT1l,WT2R,WMT1l,DRT1,lawl);
+WIGGLERPL2:LINE=(lawl,DRT1,WMT2l,WT1R,WMT2l,DRT2,DRW,WPP,2*(DRW),WNN,2*(DRW),WPP,
+                                    2*(DRW),WNN,2*(DRW),WPP,DRW,DRT2,WT2L,DRT1,lawl);
+WIGGLERPS2:LINE=(lawl,DRT1,WT1L,DRT2,DRW,WPP,2*(DRW),WNN,2*(DRW),WPP,
+                                    2*(DRW),WNN,2*(DRW),WPP,DRW,DRT2,WMT2s,WT2R,WMT2s,DRT1,lawl);
+WIGGLERPS1:LINE=(lawl,DRT1,WMT1s,WT1R,WMT1s,DRT2,DRW,WPP,2*(DRW),WNN,2*(DRW),WPP,
+                                    2*(DRW),WNN,2*(DRW),WPP,DRW,DRT2,WT2L,DRT1,lawl);
 
-sc := 1.00*0.93;
-
-lawl: drift, l := (0.00607)/2.;
-
-! CENTRAL poles
-!q-pole
- k1st := 0.005 ;!-0.0022*sc*sc
-!sextupole component
-k2nd :=  -0.78;
-
-k2_1 := 1.;
-k2_2 := -.55;
-k2_3 := .9;
-k2_4 := -.75;
-k2_5 := .7;
-
-! 3rd order component
-k3rd := -34.4;
-! 4th order component
-k4th :=  -4.5e3;
-
-! RIGHT terminal pole (SXT  A->B)
-!q-pole
-kfr1st := -0.0260*sc*sc;
-!sextupole component
- k2finr := 34.4  ;! k2*l
-! 3rd order component
-kfr3rd := 15;
-! 4th order component
-kfr4th := 1.4e3;
-
-! LEFT terminal pole
-!q-pole
-kfl1st := 0.0;
-!sextupole component
-kfl2nd := 0.23;
-! 3rd order component
-kfl3rd := -22.5;
-! 4th order component
-kfl4th := -2.5e3;
-
-WMP:  MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,k1st, k2nd,k3rd, k4th,0,0,0,0,0},
-KSL:={0,0,0,0,0,0,0,0,0,0};
-WMN:  MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,k1st,-k2nd,k3rd,-k4th,0,0,0,0,0},
-KSL:={0,0,0,0,0,0,0,0,0,0};
-
-WMTL: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,kfl1st,kfl2nd,kfl3rd,kfl4th,0,0,0,0,0},
-KSL:={0,0,0,0,0,0,0,0,0,0};
-WMTR: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0,kfr1st,0.    ,kfr3rd,kfr4th,0,0,0,0,0},
-KSL:={0,0,0,0,0,0,0,0,0,0};
-
-WMT1l: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0, kft1l,0,0,0,0,0,0,0,0}, KSL:={0,
-0,0,0,0,0,0,0,0,0};
-WMT2l: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0, kft2l,0,0,0,0,0,0,0,0}, KSL:={0,
-0,0,0,0,0,0,0,0,0};
-WMT1s: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0, kft1s,0,0,0,0,0,0,0,0}, KSL:={0,
-0,0,0,0,0,0,0,0,0};
-WMT2s: MULTIPOLE, LRAD:=0, TILT:=0, KNL:={0, kft2s,0,0,0,0,0,0,0,0}, KSL:={0,
-0,0,0,0,0,0,0,0,0};
-
- TETAW  := 0.118729 *sc            ;! central bend angle
- TETAL  := (0.118729 *sc) ;!0.119644 *sc            ! left bend angle
- TETAR  := (0.118729 *sc) ;!0.116708 *sc           ! right bend angle
-
- LWT   := 0.1368             ;! terminal pole magn. length
- LWI   := 0.2355             ;! inner pole magn. length
- LDRT1 := 0.02175            ;! terminal drift length
- LDRT2 := 0.04204            ;! terminal drift length
- LDRI  := 0.04278            ;! inner drift length
-
- FINWT := 0.384              ;! terminal pole fint
- FINWI := 0.317              ;! inner pole fint
-
-! entrance dipoles
-WT1A:sbend,l:=LWT/2,angle:=-TETAL/2,e1:=0,e2:=0,fint:=FINWT,fintx:=0,hgap:=0.0185;
-WT1B:sbend,l:=LWT/2,angle:=-TETAL/2,e1:=0,e2:=-TETAL,fint:=0,fintx:=FINWT,hgap:=0.0185;
-
-WT1C:sbend,l:=LWT/2,angle:=-TETAR/2,e1:=0,e2:=0,fint:=FINWT,fintx:=0,hgap:=0.0185,k2:=k2finr;
-WT1D:sbend,l:=LWT/2,angle:=-TETAR/2,e1:=0,e2:=-TETAR,fint:=0,fintx:=FINWT,hgap:=0.0185,k2:=k2finr;
-
-! positive inner dipole
-WPA:sbend,l:=LWI/2,angle:=TETAW,e1:=TETAW,e2:=0,fint:=FINWI,fintx:=0,hgap:=0.0185;
-WPB:sbend,l:=LWI/2,angle:=TETAW,e1:=0,e2:=TETAW,fint:=0,fintx:=FINWI,hgap:=0.0185;
-
-! negative inner dipole
-WNA:sbend,l:=LWI/2,angle:=-TETAW,e1:=-TETAW,e2:=0,fint:=FINWI,fintx:=0,hgap:=0.0185;
-WNB:sbend,l:=LWI/2,angle:=-TETAW,e1:=0,e2:=-TETAW,fint:=0,fintx:=FINWI,hgap:=0.0185;
-
-! exit dipoles
-WT2A:sbend,l:=LWT/2,angle:=-TETAL/2,e1:=-TETAL,e2:=0,fint:=FINWT,fintx:=0,hgap:=0.0185;
-WT2B:sbend,l:=LWT/2,angle:=-TETAL/2,e1:=0,e2:=0,fint:=0,fintx:=FINWT,hgap:=0.0185;
-
-WT2C:sbend,l:=LWT/2,angle:=-TETAR/2,e1:=-TETAR,e2:=0,fint:=FINWT,fintx:=0,hgap:=0.0185,
-k2:=k2finr;
-WT2D:sbend,l:=LWT/2,angle:=-TETAR/2,e1:=0,e2:=0,fint:=0,fintx:=FINWT,hgap:=0.0185,k2:=k2finr;
-
-DRW:drift,l:=LDRI;
-DRT1:drift,l:=LDRT1;
-DRT2:drift,l:=LDRT2;
-
-MW: marker      ;! wiggler centre
-
-WT1L:LINE=(WMTL,WT1A,WT1B,WMTL)         ;! entrance left terminal pole
-WT2R:LINE=(WMTR,WT2C,WT2D,WMTR)         ;! exit left terminal pole
-
-WT1R:LINE=(WMTR,WT1C,WT1D,WMTR)         ;! entrance right terminal pole
-WT2L:LINE=(WMTL,WT2A,WT2B,WMTL)         ;! exit right terminal pole
-
-WPP: LINE=(WMP,WPA,MW,WPB,WMP)             ;! positive inner pole
-WNN: LINE=(WMN,WNA,WNB,WMN)             ;! negative inner pole
-
-WPP_1: LINE=(WMP,WPA,MW,WPB,WMP)             ;! positive inner pole
-WNN_1: LINE=(WMN,WNA,WNB,WMN)             ;! negative inner pole
-WPP_2: LINE=(WMP,WPA,MW,WPB,WMP)             ;! positive inner pole
-WNN_2: LINE=(WMN,WNA,WNB,WMN)             ;! negative inner pole
-WPP_3: LINE=(WMP,WPA,MW,WPB,WMP)             ;! positive inner pole
-WNN_3: LINE=(WMN,WNA,WNB,WMN)             ;! negative inner pole
-WPP_4: LINE=(WMP,WPA,MW,WPB,WMP)             ;! positive inner pole
-WNN_4: LINE=(WMN,WNA,WNB,WMN)             ;! negative inner pole
-WPP_5: LINE=(WMP,WPA,MW,WPB,WMP)             ;! positive inner pole
-WNN_5: LINE=(WMN,WNA,WNB,WMN)             ;! negative inner pole
-
-
-WIGGLERPL1: LINE=(lawl,DRT1,WT1L,DRT2,DRW,WPP,2*DRW,WNN,2*DRW,WPP,2*DRW,WNN,2*DR
-W,WPP,DRW,DRT2,WMT1l,WT2R,WMT1l,DRT1,lawl);
-WIGGLERPL2: LINE=(lawl,DRT1,WMT2l,WT1R,WMT2l,DRT2,DRW,WPP,2*DRW,WNN,2*DRW,WPP,2*
-DRW,WNN,2*DRW,WPP,DRW,DRT2,WT2L,DRT1,lawl);
-WIGGLERPS2: LINE=(lawl,DRT1,WT1L,DRT2,DRW,WPP,2*DRW,WNN,2*DRW,WPP,2*DRW,WNN,2*DR
-W,WPP,DRW,DRT2,WMT2s,WT2R,WMT2s,DRT1,lawl);
-WIGGLERPS1: LINE=(lawl,DRT1,WMT1s,WT1R,WMT1s,DRT2,DRW,WPP,2*DRW,WNN,2*DRW,WPP,2*
-DRW,WNN,2*DRW,WPP,DRW,DRT2,WT2L,DRT1,lawl);
-
-RETURN ;!
+ value, tetaw;
+ value, tetal;
+ value, tetar;
+ value, sc;
