@@ -41,5 +41,7 @@ oblancog 2018/OCT/16 First Release
 
 oblancog 2018/NOV/02 Adding BPM apertures and limits on gradients
 
-oblancog 2018/NOV/06 Addign all apertures, changing name to DAFNE_TF and adding README info
+oblancog 2018/NOV/06 Adding all apertures, changing name to DAFNE_TF and adding README info
+
+oblancog 2018/NOV/18 Survey OK when using files from Catia Milardi "Siddarta Jan09"
 
