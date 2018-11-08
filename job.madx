@@ -1,6 +1,6 @@
 ! orblancog
 ! MRp madx model 2018/NOV/08
-! obtained from Catia Milard, version Siddarta_Jan_09
+! obtained from Catia Milardi, version Siddarta_Jan_09
 TITLE, "Positroni:  Modello  per Siddharta Jan2009";
 set,format="-20s","23.17g"; ! full precision
 option,-echo,-info,-warn;
