@@ -1,4 +1,8 @@
-!! oblancog First twiss 20161123 
+! orblancog
+! MRp madx model 2018/NOV/08
+! obtained from Catia Milard
+TITLE, "Positroni:  Modello  per Siddharta";
+set,format="-20s","23.17g"; ! full precision
 option,-echo,-info,-warn;
 
 ! the beam 
@@ -6,9 +10,9 @@ E0     := 0.510;![GeV]
 emitx  := 0.28e-6;![m]
 emity  := 2.1e-9;![m] 
 blength:= 16e-3;![m]
-bcur   := 0.4e-3;![A]
+bcur   := 4e-3;![A]
 nbunch := 107;
-nparpb := 2.05e10;
+nparpb := 8.3e09;
 espread:= 1e-3;
 beam, PARTICLE=positron, ENERGY=E0,
       ex=emitx, ey=emity, et=blength*espread,
@@ -16,7 +20,9 @@ beam, PARTICLE=positron, ENERGY=E0,
       NPART=nparpb, bcurrent=bcur, RADIATE=true;
 show, beam;
 
-! The ring 
+! The ring
+call, FILE="p_loc_siddarta.par.madx";
+call, FILE="MRp_1_4_09_4e30sempre.cur.madx";
 call,FILE='MRp_tuni_1148_1843.cur.madx';
 CALL,FILE="bendx_siddarta1.d.madx";
 CALL,FILE="wig_siddarta_low.d.madx";! from Panta
@@ -33,7 +39,7 @@ CALL,FILE="qua_siddarta_08.d.madx";
 CALL,FILE="ir2_siddarta_new.d.madx";
 CALL,FILE="ring_siddarta_08.d.madx";
 ! CALL,FILE="ring_noWGL.d"
-CALL,FILE="p_loc_siddarta.par.madx";
+
 ms1: marker;
 mid2: marker;
 !end: marker;
@@ -95,7 +101,7 @@ plot, colour=100, haxis=s, vaxis1=wx,wy, vaxis2=ddx,title="DAFNE";
 system, "ps2pdf madx.ps";
 system, "rm -f madx.ps";
 touschek, tolerance=1e-3,file="DAFNE_TF_MRp_touschek.tfs";
-aperture,file="DAFNE_TF_MRp_apertureoutput.tfs";
+aperture, file="DAFNE_TF_MRp_apertureoutput.tfs";
 emit, deltap=0;
 
 stop;
